@@ -6,6 +6,7 @@ import '../Styles/ContactCard.css';
 import { useDispatch } from 'react-redux';
 // importing the reducer actions
 import { contactAction, deleteContactThunk } from '../Redux/Reducers/contact.Reducer';
+import { toast } from 'react-toastify';
 
 function ContactCard(props) {
     // Getting contact data from props
@@ -31,7 +32,8 @@ function ContactCard(props) {
 
     // this function handles the delete contact operation
     const handleDelete = () => {
-        dispatch(deleteContactThunk(data))
+        dispatch(deleteContactThunk(data));
+        toast('Deleted the contact')
     }
 
     // Return JSX for contact card
