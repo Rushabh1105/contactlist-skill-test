@@ -79,13 +79,15 @@ function ContactForm() {
       // action to update the contact
       dispatch(updateContactThunk({...userData, address}));
       // Show toast message
-      toast.success('Data updated successfully')
+      toast.success('Data updated successfully');
+      clearInputFields()
     }else{
       // If user wants to add a new contact then it
       // dispatches the add contact action
       dispatch(addContactThunk({id:contacts.length+1,...userData, address}))
       // Show toast message
       toast.success('contact added successfully')
+      clearInputFields()
     }
   }
 
