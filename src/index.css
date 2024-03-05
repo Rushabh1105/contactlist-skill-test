@@ -1,0 +1,12 @@
+body{
+  margin: 0;
+}
+
+.App{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  /* margin-top: 10px; */
+}
