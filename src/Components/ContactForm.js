@@ -84,7 +84,8 @@ function ContactForm() {
     }else{
       // If user wants to add a new contact then it
       // dispatches the add contact action
-      dispatch(addContactThunk({id:contacts.length+1,...userData, address}))
+      const id = contacts[contacts.length-1].id+1;
+      dispatch(addContactThunk({id: id,...userData, address}))
       // Show toast message
       toast.success('contact added successfully')
       clearInputFields()

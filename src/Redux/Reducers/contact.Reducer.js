@@ -15,7 +15,7 @@ export const getContactsThunk = createAsyncThunk('contacts/getContacts', async(a
     const response = await fetch(url);
     // Convert it to json
     const data = await response.json();
-    // return the data
+    // return the dat
     return data;
 });
 
@@ -82,7 +82,9 @@ const contactSlice = createSlice({
         })
         // add new contacts to contact list
         .addCase(addContactThunk.fulfilled, (state, action) => {
-            state.contacts.push(action.payload);
+            const id = state.contacts.length+1;
+            action.payload.id = id;
+            state.contacts = [...state.contacts, action.payload];
         })
         // Update the contact list
         .addCase(updateContactThunk.fulfilled, (state, action) => {
@@ -96,7 +98,6 @@ const contactSlice = createSlice({
         // Delete contact list
         .addCase(deleteContactThunk.fulfilled, (state, action) => {
             const data = action.payload;
-
             const list = state.contacts.filter((contact) => contact.id !== data.id);
             state.contacts = list;
         })

@@ -15,7 +15,8 @@ function ContactCard(props) {
     const dispatch = useDispatch();
     // If user clicks on update button then it 
     // dispatches the action to set form data
-    const handleUpdate = () => {
+    const handleUpdate = (e) => {
+        e.preventDefault()
         dispatch(contactAction.setFormData(data))
     }
 
@@ -31,9 +32,11 @@ function ContactCard(props) {
     }
 
     // this function handles the delete contact operation
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        e.preventDefault()
         dispatch(deleteContactThunk(data));
-        toast('Deleted the contact')
+        toast.success('Deleted the contact');
+        console.log('handleDelete')
     }
 
     // Return JSX for contact card
@@ -50,9 +53,9 @@ function ContactCard(props) {
         <div className='buttons'>
             <div className='crud-btn'>
                 {/* Update contact button */}
-                <button className='btn btn-warning' onClick={handleUpdate}>Update Contact</button>
+                <button className='btn btn-warning' onClick={(e) =>handleUpdate(e)}>Update Contact</button>
                 {/* Delete contact button */}
-                <button className='btn btn-danger' onClick={handleDelete}>Delete Contact</button>
+                <button className='btn btn-danger' onClick={(e) =>handleDelete(e)}>Delete Contact</button>
             </div>
         </div>
     </div>
