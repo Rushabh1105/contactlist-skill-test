@@ -19,7 +19,7 @@ function Contacts() {
   // backend thunk and update the contacts data
   useEffect(() => {
     dispatch(getContactsThunk());  
-  }, [])
+  }, [dispatch])
 
   // Return the contacts component
   return (
