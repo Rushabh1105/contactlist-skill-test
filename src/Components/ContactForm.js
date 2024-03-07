@@ -78,6 +78,7 @@ function ContactForm() {
       // If user wants to update a contact then it dispatches the
       // action to update the contact
       dispatch(updateContactThunk({...userData, address}));
+      dispatch(contactAction.setFormData(null))
       // Show toast message
       toast.success('Data updated successfully');
       clearInputFields()

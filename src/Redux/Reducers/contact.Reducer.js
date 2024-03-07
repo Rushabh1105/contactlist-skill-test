@@ -36,31 +36,39 @@ export const addContactThunk = createAsyncThunk('contacts/addContact', async (ar
 // Update a contact to backend API
 export const updateContactThunk = createAsyncThunk('contacts/updateContact', async (args, thunkAPI) => {
     // console.log(args)
-    // Make PUT request to url using id 
-    const response = await fetch(`${url}/${args.id}`, {
-        method: 'PUT',
-        body: JSON.stringify(args),
-        headers: {'Content-type': 'application/json; charset=UTF-8'},
-    });
-    const data = await response.json();
-    console.log(data)
-    // return data 
-    return args;
+    try {
+        // Make PUT request to url using id
+        const response = await fetch(`${url}/${args.id}`, {
+            method: 'PUT',
+            body: JSON.stringify(args),
+            headers: {'Content-type': 'application/json; charset=UTF-8'},
+        });
+        const data = await response.json();
+        console.log(data)
+        // return data 
+        return args;
+    } catch (error) {
+        return args;
+    }
 });
 
 // Delete a contact from backend API
 export const deleteContactThunk = createAsyncThunk('contacts/deleteContact', async (args, thunkAPI) => {
-    // Make DELETE request to backend API
-    const response = await fetch(`${url}/${args.id}`, {
-        method: 'DELETE',
-        body: JSON.stringify(args),
-        headers: {'Content-type': 'application/json; charset=UTF-8'},
-    });
-    // Convet response to json
-    const data = await response.json();
-    console.log(data)
-    // Return the JSON data
-    return args;
+    try {
+        // Make DELETE request to backend API
+        const response = await fetch(`${url}/${args.id}`, {
+            method: 'DELETE',
+            body: JSON.stringify(args),
+            headers: {'Content-type': 'application/json; charset=UTF-8'},
+        });
+        // Convet response to json
+        const data = await response.json();
+        console.log(data)
+        // Return the JSON data
+        return args;
+    } catch (error) {
+        return args;
+    }
 })
 
 
